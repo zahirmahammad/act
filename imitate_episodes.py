@@ -107,10 +107,10 @@ def main(args):
         exit()
 
     # print num episodes
-    print(f"num_episodes {num_episodes}")
-    print(f"camera names {camera_names}")
-    print(f"batch_size_train {batch_size_train}")
-    print(f"batch_size_val  {batch_size_val}")
+    # print(f"num_episodes {num_episodes}")
+    # print(f"camera names {camera_names}")
+    # print(f"batch_size_train {batch_size_train}")
+    # print(f"batch_size_val  {batch_size_val}")
 
 
     train_dataloader, val_dataloader, stats, _ = load_data(dataset_dir, num_episodes, camera_names, batch_size_train, batch_size_val)

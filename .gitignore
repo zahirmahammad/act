@@ -8,7 +8,8 @@ data_local
 _wandb
 dataset
 ckpt_dataset
-chkpt_real_world
+chkpt_*
+ckpt_*
 
 **/.DS_Store
 

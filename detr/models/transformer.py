@@ -161,6 +161,9 @@ class TransformerEncoderLayer(nn.Module):
         self.normalize_before = normalize_before
 
     def with_pos_embed(self, tensor, pos: Optional[Tensor]):
+        # print(f"pos {pos}")
+        # print(f"pos shape {pos.shape}")
+        # print(f"tendor shape {tensor.shape}")
         return tensor if pos is None else tensor + pos
 
     def forward_post(self,

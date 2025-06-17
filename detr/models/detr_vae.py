@@ -90,12 +90,12 @@ class DETRVAE(nn.Module):
         if is_training:
             # project action sequence to embedding dim, and concat with a CLS token
             actions = actions.to(torch.float32)
-            print(actions.dtype)
+            # print(actions.dtype) -- datatype change by zahir
 
             action_embed = self.encoder_action_proj(actions) # (bs, seq, hidden_dim)
             
             qpos = qpos.to(torch.float32)
-            print(f"joint_proj: {qpos.dtype}")
+            # print(f"joint_proj: {qpos.dtype}") -- datatype change by zahir
 
             qpos_embed = self.encoder_joint_proj(qpos)  # (bs, hidden_dim)
             qpos_embed = torch.unsqueeze(qpos_embed, axis=1)  # (bs, 1, hidden_dim)
@@ -175,7 +175,8 @@ class CNNMLP(nn.Module):
                 backbone_down_projs.append(down_proj)
             self.backbone_down_projs = nn.ModuleList(backbone_down_projs)
 
-            mlp_in_dim = 768 * len(backbones) + 14
+            # mlp_in_dim = 768 * len(backbones) + 14
+            mlp_in_dim = 768 * len(backbones) + 6
             self.mlp = mlp(input_dim=mlp_in_dim, hidden_dim=1024, output_dim=14, hidden_depth=2)
         else:
             raise NotImplementedError
@@ -236,7 +237,8 @@ def build_encoder(args):
 
 
 def build(args):
-    state_dim = 14 # TODO hardcode
+    # state_dim = 14 # TODO hardcode
+    state_dim = 6 # TODO hardcode
 
     # From state
     # backbone = None # from state for now, no need for conv nets
@@ -264,7 +266,8 @@ def build(args):
     return model
 
 def build_cnnmlp(args):
-    state_dim = 14 # TODO hardcode
+    # state_dim = 14 # TODO hardcode
+    state_dim = 6 # TODO hardcode
 
     # From state
     # backbone = None # from state for now, no need for conv nets
